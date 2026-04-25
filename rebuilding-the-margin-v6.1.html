@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebuilding the Margin — Richard Cuevas</title>
+<meta name="description" content="A six-week programme for professional men who are effective everywhere except at home. Built by Richard Cuevas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --midnight: #1A1712;
+  --midnight-deep: #0D0C0A;
+  --gold: #9A7A3A;
+  --gold-light: #B8965A;
+  --parchment: #F7F3EC;
+  --parchment-dark: #EDE8DF;
+  --charcoal: #3A3530;
+  --slate: #5C5550;
+  --smoke: #8C8480;
+  --aged: #D4C9A8;
+  --ivory: #F0ECE4;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Libre Baskerville', Georgia, serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--body);
+  color: var(--charcoal);
+  background: var(--parchment);
+  line-height: 1.8;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+
+/* Grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* Scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Section dividers */
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(154,122,58,0.25), transparent);
+}
+
+/* Shared */
+section { padding: 120px 80px; position: relative; }
+.label { font-family: var(--body); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.label::after { content: ''; width: 48px; height: 1px; background: var(--gold); opacity: 0.45; }
+em, .gold { color: var(--gold); }
+
+/* Body text */
+.body-dark { font-family: var(--body); font-size: 14px; line-height: 1.9; color: var(--smoke); }
+.body-dark p { margin-bottom: 22px; }
+.body-dark p:last-child { margin-bottom: 0; }
+.body-dark strong { color: var(--parchment); font-weight: 400; }
+.body-light { font-family: var(--body); font-size: 14px; line-height: 1.9; color: var(--charcoal); max-width: 720px; }
+.body-light p + p { margin-top: 22px; }
+.body-light strong { color: var(--midnight); font-weight: 400; }
+
+/* Pull quote */
+.pull-quote {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 20px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  border-left: 2px solid var(--gold);
+  padding: 18px 0 18px 28px;
+  margin: 40px 0;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 18px 44px;
+  background: var(--midnight);
+  color: var(--parchment);
+  border: none;
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.btn:hover { background: var(--charcoal); }
+.btn:hover::after { transform: scaleX(1); }
+.btn-light { background: var(--parchment); color: var(--midnight); }
+.btn-light:hover { background: var(--parchment-dark); }
+
+/* Inline CTA blocks */
+.cta-mid { text-align: center; padding-top: 48px; }
+.cta-mid .cta-sub { font-family: var(--body); font-size: 11px; font-style: italic; color: var(--smoke); margin-top: 14px; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--parchment);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 28px;
+  position: relative;
+}
+.hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: 0.25; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.f { animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}.d4{animation-delay:.5s}.d5{animation-delay:.65s}.d6{animation-delay:.8s}
+
+.hero-eyebrow { font-family: var(--body); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 48px; }
+.hero-title { font-family: var(--serif); font-size: clamp(44px,6vw,82px); font-weight: 400; line-height: 1; color: var(--midnight); margin-bottom: 28px; max-width: 700px; }
+.hero-title em { color: var(--gold); font-style: italic; }
+.hero-rule { width: 48px; height: 2px; background: var(--gold); margin: 0 auto 32px; animation: lineGrow 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s both; }
+.hero-sub { font-family: var(--serif); font-size: clamp(18px,2.2vw,24px); font-weight: 300; font-style: italic; color: var(--slate); line-height: 1.4; margin-bottom: 24px; max-width: 520px; }
+.hero-strap { font-family: var(--body); font-size: 13px; line-height: 1.75; color: var(--charcoal); max-width: 580px; margin-bottom: 48px; opacity: 0.85; }
+.hero-detail { font-family: var(--body); font-size: 12px; letter-spacing: 0.15em; color: var(--slate); margin-bottom: 56px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+/* ─── POSITIONING ─── */
+.s-pos { background: var(--midnight); padding: 80px 80px; text-align: center; }
+.pos-stmt { font-family: var(--serif); font-size: clamp(22px,2.8vw,32px); font-weight: 300; font-style: italic; color: var(--parchment); max-width: 760px; margin: 0 auto 28px; line-height: 1.35; }
+.pos-stmt em { font-style: normal; color: var(--gold); }
+.pos-not { font-family: var(--body); font-size: 12px; color: var(--smoke); max-width: 540px; margin: 0 auto; line-height: 1.8; letter-spacing: 0.08em; }
+
+/* ─── RECOGNITION ─── */
+.s-recog { background: var(--midnight-deep); padding: 120px 80px; }
+.recog-inner { max-width: 720px; margin: 0 auto; }
+.recog-lead { font-family: var(--serif); font-size: clamp(24px,3vw,36px); font-weight: 300; font-style: italic; color: var(--parchment); line-height: 1.28; margin-bottom: 44px; }
+
+/* ─── PROMISE ─── */
+.s-promise { background: var(--parchment); padding: 100px 80px; position: relative; overflow: hidden; }
+.s-promise::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 48px; background: var(--gold); opacity: 0.4; }
+.promise-text { font-family: var(--serif); font-size: clamp(26px,3.5vw,42px); font-weight: 300; font-style: italic; color: var(--midnight); line-height: 1.25; max-width: 740px; margin: 0 auto; text-align: center; }
+.promise-text em { font-style: normal; color: var(--gold); }
+
+/* ─── PROGRAMME ─── */
+.s-prog { background: var(--parchment-dark); padding: 120px 80px; }
+.prog-inner { max-width: 960px; margin: 0 auto; }
+.prog-heading { font-family: var(--serif); font-size: clamp(26px,3vw,40px); font-weight: 300; font-style: italic; color: var(--midnight); line-height: 1.2; margin-bottom: 20px; max-width: 600px; }
+.prog-sub { font-family: var(--body); font-size: 13px; color: var(--slate); line-height: 1.7; margin-bottom: 60px; max-width: 600px; }
+.theme-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.theme-card { background: var(--ivory); padding: 36px 28px; position: relative; transition: background 0.2s; }
+.theme-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(--gold); transform: scaleY(0); transform-origin: top; transition: transform 0.3s; }
+.theme-card:hover::before { transform: scaleY(1); }
+.theme-card:hover { background: white; }
+.theme-num { font-family: var(--serif); font-size: 32px; font-style: italic; color: var(--aged); line-height: 1; margin-bottom: 14px; }
+.theme-title { font-family: var(--serif); font-size: 16px; font-style: italic; font-weight: 400; color: var(--midnight); line-height: 1.35; margin-bottom: 10px; }
+.theme-body { font-family: var(--body); font-size: 12px; line-height: 1.8; color: var(--charcoal); }
+
+/* ─── FORMAT ─── */
+.s-format { background: var(--midnight); padding: 120px 80px; }
+.format-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.format-heading { font-family: var(--serif); font-size: clamp(26px,3vw,38px); font-weight: 300; font-style: italic; color: var(--parchment); line-height: 1.22; margin-bottom: 28px; }
+.format-body { font-family: var(--body); font-size: 13px; line-height: 1.9; color: var(--smoke); }
+.format-body p { margin-bottom: 18px; }
+.format-body strong { color: var(--parchment); font-weight: 400; }
+.detail-list { display: flex; flex-direction: column; gap: 2px; }
+.detail-label { font-family: var(--body); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; opacity: 0.7; }
+.detail-row { display: flex; gap: 18px; align-items: flex-start; padding: 18px 22px; background: rgba(247,243,236,0.04); border-left: 1px solid rgba(154,122,58,0.18); transition: background 0.2s, border-color 0.2s; }
+.detail-row:hover { background: rgba(247,243,236,0.08); border-color: var(--gold); }
+.detail-icon { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--gold); opacity: 0.65; min-width: 20px; padding-top: 1px; }
+.detail-name { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--parchment); font-weight: 300; line-height: 1.3; margin-bottom: 3px; }
+.detail-desc { font-family: var(--body); font-size: 11px; color: var(--smoke); line-height: 1.65; }
+
+/* ─── OUTCOMES ─── */
+.s-outcomes { background: var(--parchment); padding: 120px 80px; position: relative; overflow: hidden; }
+.s-outcomes::before { content: '\201C'; position: absolute; top: -60px; right: 40px; font-family: var(--serif); font-size: 380px; color: var(--aged); opacity: 0.15; line-height: 1; pointer-events: none; }
+.outcomes-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.outcomes-heading { font-family: var(--serif); font-size: clamp(26px,3vw,38px); font-weight: 300; font-style: italic; color: var(--midnight); line-height: 1.22; margin-bottom: 36px; }
+
+/* ─── TESTIMONIALS ─── */
+.s-proof { background: var(--midnight-deep); padding: 100px 80px; }
+.proof-inner { max-width: 960px; margin: 0 auto; }
+.proof-heading { font-family: var(--serif); font-size: clamp(22px,2.5vw,30px); font-weight: 300; font-style: italic; color: var(--parchment); margin-bottom: 48px; text-align: center; }
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.proof-card { padding: 36px 32px; background: rgba(247,243,236,0.04); border-left: 2px solid rgba(154,122,58,0.25); }
+.proof-quote { font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 300; color: var(--parchment); line-height: 1.55; margin-bottom: 20px; opacity: 0.9; }
+.proof-attr { font-family: var(--body); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); }
+
+/* ─── QUALIFICATION ─── */
+.s-qual { background: var(--midnight); padding: 120px 80px; }
+.qual-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.qual-heading { font-family: var(--serif); font-size: clamp(26px,3vw,38px); font-weight: 300; font-style: italic; color: var(--parchment); line-height: 1.22; margin-bottom: 28px; }
+.qual-body { font-family: var(--body); font-size: 13px; line-height: 1.9; color: var(--smoke); }
+.qual-body p { margin-bottom: 18px; }
+.qual-body p:last-child { margin-bottom: 0; }
+.qual-body strong { color: var(--parchment); font-weight: 400; }
+.qual-not-heading { font-family: var(--serif); font-size: clamp(22px,2.5vw,30px); font-weight: 300; font-style: italic; color: var(--parchment); line-height: 1.22; margin-bottom: 28px; }
+
+/* ─── FAQ ─── */
+.s-faq { background: var(--parchment-dark); padding: 120px 80px; }
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-heading { font-family: var(--serif); font-size: clamp(26px,3vw,38px); font-weight: 300; font-style: italic; color: var(--midnight); line-height: 1.22; margin-bottom: 48px; }
+.faq-item { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--aged); }
+.faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.faq-q { font-family: var(--serif); font-size: 18px; font-style: italic; font-weight: 400; color: var(--midnight); margin-bottom: 12px; line-height: 1.35; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-toggle { font-size: 20px; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
+.faq-a { font-family: var(--body); font-size: 13px; line-height: 1.85; color: var(--slate); max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
+.faq-item.open .faq-a { max-height: 400px; opacity: 1; }
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+/* ─── ABOUT ─── */
+.s-about { background: var(--midnight-deep); padding: 100px 80px; }
+.about-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: 110px 1fr; gap: 56px; align-items: start; }
+.portrait-box { width: 110px; height: 136px; background: var(--charcoal); display: flex; align-items: center; justify-content: center; box-shadow: 4px 4px 20px rgba(0,0,0,0.4); position: relative; }
+.portrait-box::before { content: ''; position: absolute; inset: 0; border: 1px solid rgba(154,122,58,0.3); }
+.portrait-initials { font-family: var(--serif); font-size: 26px; font-style: italic; color: var(--gold); opacity: 0.45; }
+.about-name { font-family: var(--serif); font-size: 30px; font-style: italic; font-weight: 300; color: var(--parchment); margin-bottom: 6px; }
+.about-role { font-family: var(--body); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+.about-bio { font-family: var(--body); font-size: 13px; line-height: 1.9; color: var(--smoke); }
+.about-bio p { margin-bottom: 16px; }
+.about-bio p:last-child { margin-bottom: 0; }
+.about-bio strong { color: var(--parchment); font-weight: 400; }
+
+/* ─── CTA ─── */
+.s-cta { background: var(--parchment-dark); padding: 120px 80px; }
+.cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.cta-heading { font-family: var(--serif); font-size: clamp(30px,4vw,50px); font-weight: 300; font-style: italic; color: var(--midnight); line-height: 1.15; margin-bottom: 28px; }
+.cta-body { font-family: var(--body); font-size: 14px; line-height: 1.88; color: var(--slate); margin-bottom: 44px; }
+.cta-body p { margin-bottom: 18px; }
+.cta-body p:last-child { margin-bottom: 0; }
+.cta-body strong { color: var(--midnight); font-weight: 400; }
+.cta-note { margin-top: 20px; font-family: var(--body); font-size: 11px; color: var(--smoke); font-style: italic; }
+.cta-ps { margin-top: 48px; font-family: var(--body); font-size: 13px; color: var(--slate); line-height: 1.8; font-style: italic; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--midnight-deep); padding: 44px 80px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(212,201,168,0.1); }
+.footer-name { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--parchment); font-weight: 300; }
+.footer-url { font-family: var(--body); font-size: 11px; color: var(--smoke); letter-spacing: 0.1em; }
+.footer-copy { font-family: var(--body); font-size: 11px; color: rgba(140,132,128,0.45); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  section, .s-pos, .s-recog, .s-promise, .s-prog, .s-format, .s-outcomes, .s-proof, .s-qual, .s-faq, .s-about, .s-cta { padding: 72px 28px; }
+  .hero { padding: 60px 28px; }
+  .theme-grid { grid-template-columns: 1fr; }
+  .format-inner, .qual-inner, .proof-grid { grid-template-columns: 1fr; gap: 44px; }
+  .about-inner { grid-template-columns: 1fr; }
+  .portrait-box { display: none; }
+  footer { flex-direction: column; gap: 14px; text-align: center; padding: 36px 28px; }
+  .s-outcomes::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-eyebrow f d1">Richard Cuevas</div>
+  <h1 class="hero-title f d2">Rebuilding<br><em>the Margin.</em></h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub f d3">For the man who is effective everywhere<br>except at home.</p>
+  <p class="hero-strap f d4">A six-week programme for professional men who have built everything on the outside &mdash; and know that something on the inside got left half-done.</p>
+  <div class="hero-detail f d5">
+    <span>Six weeks</span><div class="dot"></div>
+    <span>15 hours of facilitated group work</span><div class="dot"></div>
+    <span>1:1 integration session</span><div class="dot"></div>
+    <span>Up to 10 men per cohort</span><div class="dot"></div>
+    <span>Private &amp; Confidential</span>
+  </div>
+  <a href="#waiting-list" class="btn f d6">Join the Waiting List</a>
+</section>
+
+<!-- ═══ POSITIONING ═══ -->
+<section class="s-pos reveal">
+  <p class="pos-stmt">You are not broken. The capacities that home and family life require &mdash; being reachable, letting things land, being <em>with</em> someone rather than managing them &mdash; were simply never asked of you. They are <em>underdeveloped,</em> not absent.</p>
+  <p class="pos-not">Not therapy. Not a framework. Not a course with modules. A structured process &mdash; created exclusively for professional men &mdash; that gets results where it matters most.</p>
+</section>
+
+<!-- ═══ RECOGNITION ═══ -->
+<section class="s-recog reveal">
+  <div class="recog-inner">
+    <div class="label">The situation</div>
+    <h2 class="recog-lead">You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance &mdash; between you and the people you built it for &mdash; that the same skills which built everything else cannot seem to close.</h2>
+    <div class="body-dark">
+      <p>It's a Tuesday evening. Back-to-back meetings since eight. Your phone is in your pocket and you're aware of it the way you're aware of a low-grade headache. You're home. Your body is in the room. But if someone asked you what your partner just said &mdash; you couldn't tell them. Not because you don't care. Because <strong>the part of you that listens is still at the office.</strong></p>
+      <p>Your son comes downstairs. Quiet. Something is off. You ask the right questions &mdash; with the same skill you'd use to manage a difficult stakeholder. He gives one-word answers. Goes back to his room. You think he wouldn't open up. But that isn't what happened. What happened is you turned a moment where he needed to be received into a moment where he was being <strong>managed.</strong></p>
+    </div>
+    <div class="pull-quote">"Providing everything. Present for nothing."</div>
+
+    <!-- CTA after recognition -->
+    <div class="cta-mid">
+      <a href="#waiting-list" class="btn btn-light">Join the Waiting List</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROMISE ═══ -->
+<section class="s-promise reveal">
+  <p class="promise-text">This programme builds the specific capacities your life at home is asking for &mdash; <em>without</em> dismantling anything that made you effective, and <em>without</em> asking you to become a different man.</p>
+</section>
+
+<!-- ═══ PROGRAMME ═══ -->
+<section class="s-prog reveal">
+  <div class="prog-inner">
+    <div class="label">The programme</div>
+    <h2 class="prog-heading">Six weeks. Structured. Created exclusively for professional men who have built what you've built.</h2>
+    <p class="prog-sub">Not a course with modules. Not a framework to learn. A process &mdash; developed in the precise, unsentimental terms you're more likely to trust.</p>
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-num">I.</div>
+        <div class="theme-title">Arriving behind the mask</div>
+        <div class="theme-body">The professional performance &mdash; the composure, the strategic self-presentation &mdash; and what it takes from you when it follows you home.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">II.</div>
+        <div class="theme-title">The cost of the mask</div>
+        <div class="theme-body">Your partner. Your children. Your health. An honest accounting of what the operating mode has given you and what it has taken.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">III.</div>
+        <div class="theme-title">Where the body keeps it</div>
+        <div class="theme-body">The jaw you clench without noticing. The shoulders carrying weight that doesn't belong to today. Your body has been keeping score.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">IV.</div>
+        <div class="theme-title">The space between men</div>
+        <div class="theme-body">Relational honesty in a room of men who understand your world. What happens when professional men drop the performance with each other.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">V.</div>
+        <div class="theme-title">The thing you've never said</div>
+        <div class="theme-body">The deepest work of the programme. The thing you've been carrying &mdash; spoken aloud and witnessed by men who hold it without flinching.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">VI.</div>
+        <div class="theme-title">Integration and the road ahead</div>
+        <div class="theme-body">Grounding the work in your actual life. Specific commitments. Structures that outlast the programme. The man you're becoming.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORMAT ═══ -->
+<section class="s-format reveal">
+  <div class="format-inner">
+    <div>
+      <div class="label">How it works</div>
+      <h2 class="format-heading">Private. Structured. Built for men who don't have time for anything that isn't serious.</h2>
+      <div class="format-body">
+        <p>Six evening sessions, 7pm to 9.30pm. Live on Zoom, in the privacy of your own home. Up to ten professional men doing work together that most men never get the opportunity to do.</p>
+        <p>Before you join, we talk. One to one. So I understand what you're carrying, and you understand what you're walking into. <strong>Investment is discussed here &mdash; not on this page.</strong></p>
+        <p>You've been on a thousand Zoom calls where you perform. This uses the same screen for its opposite purpose. <strong>Same camera. Same lighting. Same face. Different man.</strong></p>
+      </div>
+    </div>
+    <div>
+      <div class="detail-label">What you get</div>
+      <div class="detail-list">
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">Six evening sessions &middot; 2.5 hours each</div>
+            <div class="detail-desc">Structured, facilitated, and held. Not a call you attend &mdash; a room you enter.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">One-to-one integration session</div>
+            <div class="detail-desc">A private session with Richard to anchor what surfaced in the group.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">A cohort of up to ten men</div>
+            <div class="detail-desc">Professional men. Carefully selected. Small enough that every man is seen.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">Physical kit delivered to your door</div>
+            <div class="detail-desc">Journal, materials, and a candle. Arriving before the first session.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">Accountability partner</div>
+            <div class="detail-desc">Paired with another man. Weekly calls between sessions.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">Private channel between sessions</div>
+            <div class="detail-desc">The container continues between weeks. Reflections, check-ins, honesty.</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-icon">&mdash;</div>
+          <div>
+            <div class="detail-name">Intake conversation</div>
+            <div class="detail-desc">Before you join, we talk. To make sure this is the right fit &mdash; for you and for the group.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OUTCOMES ═══ -->
+<section class="s-outcomes reveal">
+  <div class="outcomes-inner">
+    <div class="label" style="color:var(--gold)">What changes</div>
+    <h2 class="outcomes-heading">The results show up at home &mdash; in specific, recognisable moments.</h2>
+    <div class="body-light">
+      <p>The man who actually hears his daughter &mdash; not scanning for the problem to solve, but receiving what she's bringing him. The man whose partner reaches for him and finds someone there. The man who can sit with his son when something is wrong without converting it into advice.</p>
+      <p>The man who walks through the front door and is home &mdash; not still running the four o'clock meeting in the background. <strong>These are specific, developable capacities.</strong> The same intelligence that made you exceptional in one domain can be applied, deliberately, in another.</p>
+    </div>
+
+    <!-- CTA after outcomes -->
+    <div class="cta-mid">
+      <a href="#waiting-list" class="btn">Join the Waiting List</a>
+      <div class="cta-sub" style="color:var(--slate)">No obligation. No pressure. A conversation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="s-proof reveal">
+  <div class="proof-inner">
+    <h2 class="proof-heading">What men say after</h2>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <p class="proof-quote">&ldquo;I'd tried performance coaching and mentoring before. Nothing really clicked until Rich. My relationships improved. I've been promoted four times since.&rdquo;</p>
+        <div class="proof-attr">Phil &mdash; Senior leader, 9 months</div>
+      </div>
+      <div class="proof-card">
+        <p class="proof-quote">&ldquo;I'm a lucky guy with a good life. I wanted to slow things down. Find some space to reflect. A week later &mdash; greater sense of calm, much clearer about my own needs.&rdquo;</p>
+        <div class="proof-attr">Clive &mdash; Professional, retreat</div>
+      </div>
+      <div class="proof-card">
+        <p class="proof-quote">&ldquo;It's the type of investment in yourself that you wish you'd done ten years ago.&rdquo;</p>
+        <div class="proof-attr">Andy &mdash; Programme participant</div>
+      </div>
+      <div class="proof-card">
+        <p class="proof-quote">&ldquo;I've tried different therapies and retreats. This work feels like the real deal. Doing it alongside other men &mdash; I've never felt less alone.&rdquo;</p>
+        <div class="proof-attr">Simon &mdash; 18-month participant</div>
+      </div>
+    </div>
+
+    <!-- CTA after proof -->
+    <div class="cta-mid" style="padding-top: 56px;">
+      <a href="#waiting-list" class="btn btn-light">Join the Waiting List</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUALIFICATION ═══ -->
+<section class="s-qual reveal">
+  <div class="qual-inner">
+    <div>
+      <div class="label">Is this for you</div>
+      <h2 class="qual-heading">This programme is for the man who has noticed the distance &mdash; and is ready to close it.</h2>
+      <div class="qual-body">
+        <p>You are successful. You are providing. You are showing up in every way the role requires. But there is a gap between the man your family experiences and the man you thought you'd be by now.</p>
+        <p>You may have tried things before &mdash; quietly, without telling anyone. And it felt wrong. Not painful. Wrong. Like the tool didn't match what needed fixing. <strong>Your resistance was accurate, not avoidance.</strong></p>
+      </div>
+    </div>
+    <div>
+      <h2 class="qual-not-heading">This programme is not for everyone.</h2>
+      <div class="qual-body">
+        <p>Not for men in acute crisis. Not group therapy. Not for men who want tips, techniques, or a weekend fix.</p>
+        <p>What it requires: six Tuesday evenings. Honesty. The willingness to be in a room where the professional mask doesn't work. <strong>If that feels right &mdash; even slightly &mdash; you're the man it was built for.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="s-faq reveal">
+  <div class="faq-inner">
+    <h2 class="faq-heading">Questions you're probably asking yourself</h2>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Is this therapy?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">No. This is coaching and group work, not therapy. The distinction matters. Therapy typically explores the past to understand the present. This programme builds specific capacities in the present and applies them directly to your life at home. If clinical support is what you need, Richard will tell you &mdash; honestly and directly &mdash; during the intake conversation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>I'm not sure I'm struggling enough for this.</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Most men who join this programme are not in crisis. They are performing well by every available measure. What they've noticed is a distance &mdash; at the dinner table, with their partner, with their children &mdash; that doesn't show up in any review. If you've noticed it, that's enough.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Is it confidential?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Completely. What's shared in the group stays in the group. Every man agrees to this before the first session. The men in this programme are professionals who understand what confidentiality means. Your professional reputation is safe.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What if I can't make every session?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">The programme is designed as a continuous arc &mdash; each week builds on the last. Missing a session weakens your experience and the group's. If your schedule can't accommodate six consecutive weeks, wait for a cohort whose dates work.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>What happens on Zoom that's different from every other Zoom call?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Everything. Camera on. No second screens. No multitasking. The work involves your body, your voice, your face &mdash; not a passive presentation. Most men are surprised by how quickly the screen disappears and the room becomes real.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>How is this different from what I've tried before?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-a">Most of what's available starts from the assumption that something is wrong with you &mdash; that you're shut down, emotionally unavailable, behind. This programme starts from the recognition that the qualities which made you successful were intelligent responses to the environments that shaped you. The distance at home is not a character flaw. It's a competency gap &mdash; and competency gaps close. The man who tried to open up and found it didn't fit wasn't failing. He was using a tool that was never built for him.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="s-about reveal">
+  <div class="about-inner">
+    <div class="portrait-box"><div class="portrait-initials">RC</div></div>
+    <div>
+      <div class="about-name">Richard Cuevas</div>
+      <div class="about-role">Men's Coach &nbsp;&middot;&nbsp; richardcuevas.com</div>
+      <div class="about-bio">
+        <p>24 years in corporate compliance and senior leadership &mdash; Bank of America, Barclays, Goldman Sachs. I know the operating mode because I lived inside it. I know what the dinner table looks like when the man sitting at it is still running the day. And I know what it costs, because I paid it.</p>
+        <p>I rebuilt what got left half-done. It took longer than it needed to because nothing I tried was built for the man I actually was. This programme exists because of that gap.</p>
+        <p><strong>No frameworks. No jargon. No assumption that you are the problem.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="s-cta reveal" id="waiting-list">
+  <div class="cta-inner">
+    <h2 class="cta-heading">The next cohort is forming.</h2>
+    <div class="cta-body">
+      <p>Ten men. Six weeks. Fifteen hours of group work and a private integration session.</p>
+      <p><strong>Put your name on the list. A private conversation before you commit. No obligation. No pressure.</strong></p>
+    </div>
+    <a href="/cdn-cgi/l/email-protection#b2c0dbd1dad3c0d6f2c0dbd1dad3c0d6d1c7d7c4d3c19cd1dddf" class="btn">Join the Waiting List</a>
+    <p class="cta-ps">If you've read this far, some part of you already knows whether this is for you. The distance can be closed. The margin can be rebuilt. And you don't have to do it alone.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-name">Richard Cuevas</span>
+  <span class="footer-url">richardcuevas.com</span>
+  <span class="footer-copy">&copy; 2026</span>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+
+</body>
+</html>

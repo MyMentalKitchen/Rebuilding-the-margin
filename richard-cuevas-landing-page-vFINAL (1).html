@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Time Is Running Out for High‑Performing Men — Richard Cuevas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --midnight: #1A1712;
+  --midnight-deep: #0d0c0a;
+  --gold: #9A7A3A;
+  --gold-light: #B8965A;
+  --parchment: #F7F3EC;
+  --parchment-dark: #EDE8DF;
+  --charcoal: #3A3530;
+  --slate: #5C5550;
+  --smoke: #8C8480;
+  --aged: #D4C9A8;
+  --ivory: #F0ECE4;
+  --serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --sans: 'Libre Baskerville', Georgia, serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--midnight-deep);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.fade-up { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.25s; }
+.d3 { animation-delay: 0.4s; }
+.d4 { animation-delay: 0.55s; }
+.d5 { animation-delay: 0.7s; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--midnight-deep);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.35;
+}
+
+.hero-copy {
+  padding: 80px 56px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 36px;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.5vw, 62px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--parchment);
+  margin-bottom: 32px;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 32px;
+  transform-origin: left;
+  animation: lineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.hero-deck {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--smoke);
+  max-width: 420px;
+  margin-bottom: 48px;
+}
+
+.hero-deck strong { color: var(--parchment); font-weight: 400; }
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--smoke);
+  letter-spacing: 0.06em;
+}
+
+.hero-meta-dot {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* FORM PANEL */
+.hero-form-panel {
+  background: var(--parchment);
+  padding: 80px 64px 80px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-form-panel::before {
+  content: '';
+  position: absolute;
+  top: 64px; bottom: 64px; left: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--aged) 20%, var(--aged) 80%, transparent);
+}
+
+.form-heading {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--midnight);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.form-sub {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--slate);
+  margin-bottom: 32px;
+  line-height: 1.65;
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 7px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 13px 16px;
+  background: white;
+  border: 1px solid var(--aged);
+  border-radius: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--midnight);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus { border-color: var(--gold); }
+.form-group input::placeholder { color: var(--smoke); font-style: italic; }
+
+.btn-submit {
+  width: 100%;
+  padding: 17px 24px;
+  background: var(--midnight);
+  color: var(--parchment);
+  border: none;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.btn-submit:hover { background: var(--charcoal); }
+.btn-submit:hover::after { transform: scaleX(1); }
+
+.form-privacy {
+  margin-top: 16px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--smoke);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.form-mockup {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--aged);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.mockup-book {
+  width: 48px;
+  aspect-ratio: 3/4;
+  background: var(--midnight);
+  flex-shrink: 0;
+  box-shadow: 3px 3px 14px rgba(0,0,0,0.22);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 6px;
+}
+
+.mockup-book-inner {
+  font-family: var(--serif);
+  font-size: 7px;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.7;
+  line-height: 1.2;
+}
+
+.mockup-detail strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--midnight);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.mockup-detail span {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--slate);
+}
+
+/* PROBLEM */
+.section-problem {
+  background: var(--midnight);
+  padding: 120px 80px;
+  position: relative;
+}
+
+.section-problem::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.25;
+}
+
+.section-inner { max-width: 760px; margin: 0 auto; }
+
+.section-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label::after {
+  content: '';
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.45;
+}
+
+.problem-lead {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parchment);
+  line-height: 1.28;
+  margin-bottom: 44px;
+}
+
+.pull-quote-dark {
+  border-left: 2px solid var(--gold);
+  padding: 18px 0 18px 28px;
+  margin: 44px 0;
+}
+
+.pull-quote-dark p {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.body-copy {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--smoke);
+}
+
+.body-copy p { margin-bottom: 22px; }
+.body-copy p:last-child { margin-bottom: 0; }
+.body-copy strong { color: var(--parchment); font-weight: 400; }
+
+/* SIGNALS */
+.section-signals {
+  background: var(--parchment-dark);
+  padding: 100px 80px;
+}
+
+.signals-header { text-align: center; margin-bottom: 60px; }
+
+.signals-heading {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--midnight);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.signals-subhead {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--slate);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.signals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.signal-card {
+  background: var(--ivory);
+  padding: 40px 30px;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.signal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.signal-card:hover::before { transform: scaleX(1); }
+.signal-card:hover { background: white; }
+
+.signal-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-style: italic;
+  color: var(--aged);
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.signal-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--midnight);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.signal-body {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--charcoal);
+}
+
+/* INSIDE */
+.section-inside {
+  background: var(--midnight-deep);
+  padding: 120px 80px;
+  position: relative;
+}
+
+.section-inside::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.2;
+}
+
+.inside-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.inside-heading {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parchment);
+  line-height: 1.22;
+  margin-bottom: 24px;
+}
+
+.inside-body {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--smoke);
+}
+
+.inside-body p { margin-bottom: 18px; }
+
+.chapters-list { display: flex; flex-direction: column; gap: 2px; }
+
+.chapter-row {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: rgba(247, 243, 236, 0.04);
+  border-left: 1px solid rgba(154, 122, 58, 0.18);
+  transition: background 0.2s, border-color 0.2s;
+  cursor: default;
+}
+
+.chapter-row:hover {
+  background: rgba(247, 243, 236, 0.08);
+  border-color: var(--gold);
+}
+
+.ch-num {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.65;
+  min-width: 26px;
+  padding-top: 2px;
+}
+
+.ch-name {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--parchment);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+
+.ch-desc {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--smoke);
+  line-height: 1.6;
+}
+
+/* REFRAME */
+.section-reframe {
+  background: var(--parchment);
+  padding: 120px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-reframe::before {
+  content: '"';
+  position: absolute;
+  top: -60px; left: 30px;
+  font-family: var(--serif);
+  font-size: 380px;
+  color: var(--aged);
+  opacity: 0.22;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.reframe-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.reframe-quote {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--midnight);
+  line-height: 1.22;
+  margin-bottom: 44px;
+}
+
+.reframe-quote em { color: var(--gold); font-style: normal; }
+
+.reframe-body {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--charcoal);
+}
+
+.reframe-body p { margin-bottom: 22px; }
+.reframe-body p:last-child { margin-bottom: 0; }
+
+.attribution {
+  margin-top: 44px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.attr-line { width: 28px; height: 1px; background: var(--gold); }
+
+.attr-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--slate);
+  letter-spacing: 0.06em;
+}
+
+/* ABOUT */
+.section-about {
+  background: var(--midnight);
+  padding: 100px 80px;
+}
+
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.portrait-box {
+  width: 110px;
+  height: 136px;
+  background: var(--charcoal);
+  position: relative;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.portrait-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(154, 122, 58, 0.3);
+  z-index: 1;
+}
+
+.portrait-initials {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.45;
+}
+
+.about-name {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--parchment);
+  margin-bottom: 6px;
+}
+
+.about-role {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.about-bio {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--smoke);
+}
+
+.about-bio p { margin-bottom: 16px; }
+.about-bio p:last-child { margin-bottom: 0; }
+.about-bio strong { color: var(--parchment); font-weight: 400; }
+
+/* BOTTOM CTA */
+.section-bottom-cta {
+  background: var(--parchment-dark);
+  padding: 120px 80px;
+}
+
+.bottom-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: center;
+}
+
+.bottom-heading {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.5vw, 50px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--midnight);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.bottom-body {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.88;
+  color: var(--slate);
+}
+
+.bottom-body p { margin-bottom: 18px; }
+.bottom-body p:last-child { margin-bottom: 0; }
+.bottom-body strong { color: var(--midnight); font-weight: 400; }
+
+.bottom-form-card {
+  background: var(--midnight);
+  padding: 44px 36px;
+  position: relative;
+}
+
+.bottom-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+}
+
+.bottom-form-heading {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--parchment);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.bottom-form-sub {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--smoke);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.bottom-form-card .form-group label { color: var(--smoke); }
+
+.bottom-form-card .form-group input {
+  background: rgba(247,243,236,0.06);
+  border-color: rgba(212,201,168,0.22);
+  color: var(--parchment);
+}
+
+.bottom-form-card .form-group input::placeholder { color: var(--smoke); }
+.bottom-form-card .form-group input:focus {
+  border-color: var(--gold);
+  background: rgba(247,243,236,0.1);
+}
+
+.btn-gold {
+  width: 100%;
+  padding: 17px 24px;
+  background: var(--gold);
+  color: var(--midnight);
+  border: none;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.25s;
+}
+
+.btn-gold:hover { background: var(--gold-light); }
+
+.bottom-privacy {
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(140,132,128,0.65);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* FOOTER */
+footer {
+  background: var(--midnight-deep);
+  padding: 44px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(212,201,168,0.1);
+}
+
+.footer-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--parchment);
+  font-weight: 300;
+}
+
+.footer-url {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--smoke);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-url:hover { color: var(--gold); }
+
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(140,132,128,0.45);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding: 60px 28px 44px; }
+  .hero-form-panel { padding: 44px 28px 60px; }
+  .hero-form-panel::before { display: none; }
+
+  .section-problem,
+  .section-signals,
+  .section-inside,
+  .section-reframe,
+  .section-about,
+  .section-bottom-cta { padding: 72px 28px; }
+
+  .signals-grid { grid-template-columns: 1fr; }
+  .inside-grid { grid-template-columns: 1fr; gap: 44px; }
+  .about-inner { grid-template-columns: 1fr; }
+  .portrait-box { display: none; }
+  .bottom-grid { grid-template-columns: 1fr; gap: 44px; }
+  footer { flex-direction: column; gap: 14px; text-align: center; padding: 36px 28px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-copy">
+    <div class="eyebrow fade-up d1">Richard Cuevas &mdash; Free Essay</div>
+
+    <h1 class="hero-title fade-up d2">
+      Effective Everywhere.<br>
+      <em>Except&nbsp;at&nbsp;Home.</em>
+    </h1>
+
+    <div class="gold-rule"></div>
+
+    <p class="hero-deck fade-up d3">
+      You are performing well by every available measure.<br><br>
+      You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance — between you and the people you built it for — that you haven't been able to close.<br><br>
+      <strong>Something is thinning beneath the surface.</strong> Your partner felt it first. Your children are adapting to it. You've noticed it in moments you don't talk about.<br><br>
+      This essay names it — precisely, without jargon, without telling you something is wrong with you.
+    </p>
+
+    <div class="hero-meta fade-up d4">
+      <div class="hero-meta-dot"></div>
+      27-page essay &nbsp;&middot;&nbsp; No cost &nbsp;&middot;&nbsp; Delivered immediately
+    </div>
+  </div>
+
+  <div class="hero-form-panel fade-up d2">
+    <div class="form-heading">Read the essay.<br>No obligation.</div>
+    <p class="form-sub">Enter your name and email and it arrives in your inbox within minutes.</p>
+
+    <form action="#" method="post" onsubmit="return false;">
+      <div class="form-group">
+        <label for="name-1">First Name</label>
+        <input type="text" id="name-1" name="first_name" placeholder="Your first name" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="email-1">Email Address</label>
+        <input type="email" id="email-1" name="email" placeholder="Your email address" autocomplete="email">
+      </div>
+      <button type="submit" class="btn-submit">Send Me the Essay</button>
+    </form>
+
+    <p class="form-privacy">Your details stay private.</p>
+
+  </div>
+
+</section>
+
+<!-- PROBLEM AGITATION -->
+<section class="section-problem">
+  <div class="section-inner">
+    <div class="section-label">The situation</div>
+
+    <h2 class="problem-lead">
+      You've built something real. The scaffolding of your professional life is intact. And yet something is happening beneath the structure that doesn't show up in any review.
+    </h2>
+
+    <div class="pull-quote-dark">
+      <p>"A distance. Between you and your children. Between you and your partner. Between you and the version of yourself you thought you'd be by now."</p>
+    </div>
+
+    <div class="body-copy">
+      <p>It isn't a crisis. That's precisely the problem. A crisis demands a response. This doesn't. It just continues — slowly, without drama, without a single moment you can point to.</p>
+
+      <p>The dinner table where you're physically present but somewhere else. The child who stopped bringing certain things to you — not in one moment, but gradually, through hundreds of small interactions. The partner who isn't arguing anymore. Who has gone quiet. Who has, in the way that matters most, <strong>stopped reaching.</strong></p>
+
+      <p>You've probably noticed it. Most men in your position have. They notice it in moments they don't talk about — at 3am, or at the end of the day on the journey home.</p>
+
+      <p>You haven't stopped caring. You haven't checked out. But something that used to be present has gone quietly missing, and the gap has been growing for longer than you want to admit.</p>
+
+      <p>The standard response is to offer you a framework. An emotional vocabulary. A programme that begins from the assumption that <strong>something is wrong with you.</strong></p>
+
+      <p>That assumption is wrong. And the fact that it feels wrong to you is not defensiveness. It's you reading the situation accurately.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELF-QUALIFICATION -->
+<section class="section-signals">
+  <div class="signals-header">
+    <h2 class="signals-heading">This essay is for you if any of this is familiar</h2>
+  </div>
+
+  <div class="signals-grid">
+    <div class="signal-card">
+      <div class="signal-num">I.</div>
+      <div class="signal-title">You are present in the technical sense</div>
+      <div class="signal-body">You're at the dinner table. You're at the school events. You're providing everything the role requires. But there's a distance between you and what's actually happening in the room — and the people who live with you experience it, even if no one has named it.</div>
+    </div>
+
+    <div class="signal-card">
+      <div class="signal-num">II.</div>
+      <div class="signal-title">You've tried to do something about it</div>
+      <div class="signal-body">Quietly, without telling anyone. Read things. None of it quite worked. It felt wrong. Not painful — wrong. The frameworks felt clinical.</div>
+    </div>
+
+    <div class="signal-card">
+      <div class="signal-num">III.</div>
+      <div class="signal-title">Some part of you knows the call is coming</div>
+      <div class="signal-body">Not a crisis yet. But you can sense the direction of travel. The feeling that something has been thinning for longer than you want to admit — and the time between now and the moment of reckoning is not unlimited.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE THE ESSAY -->
+<section class="section-inside">
+  <div class="inside-grid">
+
+    <div>
+      <div class="section-label">What the essay covers</div>
+      <h2 class="inside-heading">Not a guide. Not a programme. An honest description of what's happening.</h2>
+      <div class="inside-body">
+        <p>Most of what's written for men in your position starts from the assumption that something is wrong with you. That you're emotionally unavailable. Shut down. Behind. This essay doesn't start there.</p>
+        <p>It starts with the recognition that the qualities that made you successful — containment, self-reliance, performance under pressure — were not failures of character. They were intelligent responses to the environments that shaped you. You were built for the life you built.</p>
+        <p>The essay asks a different question: whether the same operating mode that made you exceptional at work has quietly become the thing creating distance at home — without drama, without a single identifiable moment of failure.</p>
+        <p>Not broken. Unfinished. That distinction is not a consolation. It's a starting point.</p>
+      </div>
+    </div>
+
+    <div class="chapters-list">
+      <div style="font-family: var(--sans); font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; opacity: 0.7;">Nine sections. No jargon.</div>
+      <div class="chapter-row">
+        <div class="ch-num">I.</div>
+        <div>
+          <div class="ch-name">Your Position</div>
+          <div class="ch-desc">What you've built, what it took, and the thing that doesn't show up in any performance review.</div>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-num">II.</div>
+        <div>
+          <div class="ch-name">The Margin You've Never Measured</div>
+          <div class="ch-desc">A financial metaphor for something most successful men have never been taught to track — the buffer between functioning and something giving way.</div>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-num">III – IV.</div>
+        <div>
+          <div class="ch-name">How the Margin Was Built — and What It Cost</div>
+          <div class="ch-desc">The capacities that were rewarded, the ones that weren't, and why the operating mode follows you home.</div>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-num">V – VI.</div>
+        <div>
+          <div class="ch-name">The Thinning — and Who Feels It First</div>
+          <div class="ch-desc">What it looks like at home, with your partner, with your children, at work, in your body. And who registers the change before you do.</div>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-num">VII – VIII.</div>
+        <div>
+          <div class="ch-name">What This Actually Is — and Why Nothing Has Worked</div>
+          <div class="ch-desc">Why the standard framings don't fit. Why your resistance is information, not avoidance. The distinction between broken and unfinished.</div>
+        </div>
+      </div>
+      <div class="chapter-row">
+        <div class="ch-num">IX.</div>
+        <div>
+          <div class="ch-name">The Margin Call</div>
+          <div class="ch-desc">The moment that arrives for most men eventually — a son, a daughter, a partner. And the one question that moment asks.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE REFRAME -->
+<section class="section-reframe">
+  <div class="reframe-inner">
+
+    <h2 class="reframe-quote">
+      Not broken.<br>
+      <em>Unfinished.</em><br>
+      That distinction is not<br>a consolation.<br>
+      It's a starting point.
+    </h2>
+
+    <div class="attribution">
+      <div class="attr-line"></div>
+      <div class="attr-text">From the essay &mdash; Section VII</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-about">
+  <div class="about-inner">
+
+    <div class="portrait-box">
+      <div class="portrait-initials">RC</div>
+    </div>
+
+    <div>
+      <div class="about-name">Richard Cuevas</div>
+      <div class="about-role">Men's Coach &nbsp;&middot;&nbsp; richardcuevas.com</div>
+      <div class="about-bio">
+        <p>24 years in corporate compliance and senior leadership — Bank of America, Barclays, Goldman Sachs. Now working with professional men navigating the distance between who they are at work and who they want to be at home. This essay is drawn from that work.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="section-bottom-cta">
+  <div class="bottom-grid">
+
+    <div>
+      <h2 class="bottom-heading">The distance can be closed.</h2>
+      <div class="bottom-body">
+        <p>Nothing like this existed when I needed it. So I wrote it.</p>
+        <p>Read the essay. Sit with it. Read it again.</p>
+        <p><strong>If it names something you've been carrying — the recognition itself is worth something. It means the distance between where you are and where you want to be is smaller than it feels.</strong></p>
+      </div>
+    </div>
+
+    <div class="bottom-form-card">
+      <div class="bottom-form-heading">Read the essay.<br>No obligation.</div>
+      <p class="bottom-form-sub">Your name. Your email. One delivery.</p>
+
+      <form action="#" method="post" onsubmit="return false;">
+        <div class="form-group">
+          <label for="name-2">First Name</label>
+          <input type="text" id="name-2" name="first_name" placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label for="email-2">Email Address</label>
+          <input type="email" id="email-2" name="email" placeholder="Your email address">
+        </div>
+        <button type="submit" class="btn-gold">Send Me the Essay</button>
+      </form>
+
+      <p class="bottom-privacy">Your details stay private.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Richard Cuevas</div>
+  <a href="https://richardcuevas.com" class="footer-url">richardcuevas.com</a>
+  <div class="footer-copy">&copy; 2025 Richard Cuevas. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
