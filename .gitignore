@@ -1,2 +1,6 @@
 .claude/
 .DS_Store
+
+# Versioned working drafts — canonical files are webinar.html / webinar-confirmation.html
+webinar-v*.html
+webinar-confirmation-v*.html
