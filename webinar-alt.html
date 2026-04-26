@@ -857,6 +857,8 @@ footer {
   opacity: 1;
   pointer-events: auto;
 }
+.modal-overlay * { pointer-events: none; }
+.modal-overlay.is-open * { pointer-events: auto; }
 .modal {
   position: relative;
   width: 100%;
