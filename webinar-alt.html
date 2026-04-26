@@ -1277,21 +1277,9 @@ body.modal-open {
 
 <!-- ═══ SCROLL ANIMATIONS + MODAL ═══ -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
-
-  // Modal open/close
-  function openModal(id) {
-    var modal = document.getElementById(id);
-    if (!modal) return;
+(function () {
+  // Modal open/close — event delegation, runs immediately, no DOMContentLoaded dependency
+  function openModal(modal) {
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
@@ -1302,20 +1290,48 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('modal-open');
   }
 
-  document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
-    btn.addEventListener('click', function () { openModal(btn.getAttribute('data-open-modal')); });
-  });
-  document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
-    overlay.addEventListener('click', function (e) {
-      if (e.target === overlay || e.target.hasAttribute('data-close-modal')) closeModal(overlay);
-    });
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-overlay.is-open').forEach(closeModal);
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest && e.target.closest('[data-open-modal]');
+    if (trigger) {
+      var modal = document.getElementById(trigger.getAttribute('data-open-modal'));
+      if (modal) openModal(modal);
+      return;
+    }
+    var overlay = e.target.closest && e.target.closest('.modal-overlay');
+    if (overlay && (e.target === overlay || (e.target.hasAttribute && e.target.hasAttribute('data-close-modal')) || (e.target.closest && e.target.closest('[data-close-modal]')))) {
+      closeModal(overlay);
     }
   });
-});
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var open = document.querySelectorAll('.modal-overlay.is-open');
+      for (var i = 0; i < open.length; i++) closeModal(open[i]);
+    }
+  });
+
+  // Scroll reveal — guard with feature check so older browsers don't break
+  function startReveal() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startReveal);
+  } else {
+    startReveal();
+  }
+})();
 </script>
 
 <!-- ═══ GHL FORM EMBED SCRIPT ═══ -->
