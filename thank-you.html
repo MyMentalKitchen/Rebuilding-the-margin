@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Essay Is on Its Way — Richard Cuevas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --midnight: #1A1712;
+  --midnight-deep: #0d0c0a;
+  --gold: #9A7A3A;
+  --gold-light: #B8965A;
+  --parchment: #F7F3EC;
+  --parchment-dark: #EDE8DF;
+  --charcoal: #3A3530;
+  --slate: #5C5550;
+  --smoke: #8C8480;
+  --aged: #D4C9A8;
+  --ivory: #F0ECE4;
+  --serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --sans: 'Libre Baskerville', Georgia, serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--midnight-deep);
+  color: var(--charcoal);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.4;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.fade-up { animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.25s; }
+.d3 { animation-delay: 0.4s; }
+.d4 { animation-delay: 0.55s; }
+.d5 { animation-delay: 0.7s; }
+
+/* MAIN CONTENT */
+.thank-you-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.thank-you-heading {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.12;
+  color: var(--parchment);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.thank-you-heading em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.gold-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 32px;
+  transform-origin: center;
+  animation: lineGrow 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.thank-you-deck {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--smoke);
+  max-width: 540px;
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.thank-you-deck strong {
+  color: var(--parchment);
+  font-weight: 400;
+}
+
+/* VIDEO CONTAINER */
+.vsl-container {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 48px;
+  position: relative;
+  background: var(--midnight);
+  border: 1px solid rgba(154, 122, 58, 0.2);
+  overflow: hidden;
+}
+
+.vsl-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.vsl-wrapper iframe,
+.vsl-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Placeholder — remove this block once a real video is embedded */
+.vsl-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--midnight);
+  gap: 16px;
+}
+
+.vsl-placeholder-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.vsl-placeholder-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--gold);
+  margin-left: 3px;
+}
+
+.vsl-placeholder-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  opacity: 0.5;
+}
+/* End placeholder block */
+
+/* TRANSITION TEXT */
+.transition-text {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--smoke);
+  max-width: 540px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.transition-text strong {
+  color: var(--parchment);
+  font-weight: 400;
+}
+
+/* CTA BUTTON */
+.btn-book-call {
+  display: inline-block;
+  padding: 20px 48px;
+  background: var(--gold);
+  color: var(--midnight);
+  border: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.btn-book-call:hover {
+  background: var(--gold-light);
+}
+
+.btn-book-call-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(140,132,128,0.65);
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* FOOTER */
+footer {
+  background: var(--midnight-deep);
+  padding: 44px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(212,201,168,0.1);
+}
+
+.footer-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--parchment);
+  font-weight: 300;
+}
+
+.footer-url {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--smoke);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-url:hover { color: var(--gold); }
+
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(140,132,128,0.45);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .thank-you-main { padding: 60px 24px; }
+  footer { flex-direction: column; gap: 14px; text-align: center; padding: 36px 28px; }
+}
+
+</style>
+</head>
+<body>
+
+<main class="thank-you-main">
+
+  <div class="eyebrow fade-up d1">Richard Cuevas</div>
+
+  <h1 class="thank-you-heading fade-up d2">
+    Your essay is on its way.<br>
+    <em>While you wait.</em>
+  </h1>
+
+  <div class="gold-rule"></div>
+
+  <p class="thank-you-deck fade-up d3">
+    Check your inbox in the next few minutes. While the essay is landing, there's something worth watching first.
+  </p>
+
+  <!-- VIDEO SECTION -->
+  <div class="vsl-container fade-up d3">
+    <div class="vsl-wrapper">
+
+      <!--
+        ============================================================
+        REPLACE THE PLACEHOLDER BELOW WITH YOUR VIDEO EMBED.
+
+        YouTube example:
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+
+        Vimeo example:
+        <iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID" allowfullscreen></iframe>
+
+        Self-hosted example:
+        <video controls poster="poster.jpg">
+          <source src="your-video.mp4" type="video/mp4">
+        </video>
+
+        Then delete the entire .vsl-placeholder div below.
+        ============================================================
+      -->
+
+      <div class="vsl-placeholder">
+        <div class="vsl-placeholder-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 20,12 8,19"/></svg>
+        </div>
+        <div class="vsl-placeholder-text">Video goes here</div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="transition-text fade-up d4">
+    <strong>Most men who find this essay sit with it for a while before doing anything.</strong> That's the right instinct. But if something in it resonates — and you want to have a private, honest conversation about what rebuilding looks like — there's a way to do that.
+  </p>
+
+  <!--
+    ============================================================
+    REPLACE # WITH YOUR BOOKING LINK:
+    GHL calendar: https://link.timclements.com/widget/booking/YOUR_CALENDAR_ID
+    Calendly:     https://calendly.com/richardcuevas/discovery
+    ============================================================
+  -->
+  <a href="#" class="btn-book-call fade-up d5">Book a Call</a>
+  <p class="btn-book-call-sub fade-up d5">No obligation. No pressure. A conversation.</p>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Richard Cuevas</div>
+  <a href="https://richardcuevas.com" class="footer-url">richardcuevas.com</a>
+  <div class="footer-copy">&copy; 2025 Richard Cuevas. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
