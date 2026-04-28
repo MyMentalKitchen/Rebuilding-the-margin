@@ -27,7 +27,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--midnight-deep);
+  background: var(--parchment);
   color: var(--charcoal);
   font-family: var(--sans);
   font-size: 16px;
@@ -64,10 +64,9 @@ body::before {
 /* HERO */
 .hero {
   min-height: 100vh;
-  background: var(--midnight-deep);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
+  background: var(--parchment);
+  padding: 80px;
+  display: flow-root;
   position: relative;
 }
 
@@ -78,13 +77,6 @@ body::before {
   height: 1px;
   background: linear-gradient(to right, transparent, var(--gold), transparent);
   opacity: 0.35;
-}
-
-.hero-copy {
-  padding: 80px 56px 80px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .eyebrow {
@@ -102,7 +94,7 @@ body::before {
   font-weight: 300;
   font-style: italic;
   line-height: 1.05;
-  color: var(--parchment);
+  color: var(--midnight);
   margin-bottom: 32px;
 }
 
@@ -124,20 +116,22 @@ body::before {
   font-family: var(--sans);
   font-size: 14px;
   line-height: 1.9;
-  color: var(--smoke);
-  max-width: 420px;
+  color: var(--charcoal);
+  max-width: 600px;
   margin-bottom: 48px;
+  opacity: 0.85;
 }
 
-.hero-deck strong { color: var(--parchment); font-weight: 400; }
+.hero-deck strong { color: var(--midnight); font-weight: 400; }
 
 .hero-meta {
+  clear: both;
   display: flex;
   align-items: center;
   gap: 10px;
   font-family: var(--sans);
   font-size: 12px;
-  color: var(--smoke);
+  color: var(--slate);
   letter-spacing: 0.06em;
 }
 
@@ -150,20 +144,21 @@ body::before {
 
 /* FORM PANEL */
 .hero-form-panel {
-  background: var(--parchment);
-  padding: 80px 64px 80px 56px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  float: right;
+  width: 360px;
+  margin: 0 0 28px 48px;
+  background: var(--midnight);
+  padding: 36px 30px;
   position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
 }
 
 .hero-form-panel::before {
   content: '';
   position: absolute;
-  top: 64px; bottom: 64px; left: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--aged) 20%, var(--aged) 80%, transparent);
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
 }
 
 .form-heading {
@@ -171,7 +166,7 @@ body::before {
   font-size: 26px;
   font-weight: 400;
   font-style: italic;
-  color: var(--midnight);
+  color: var(--parchment);
   line-height: 1.25;
   margin-bottom: 8px;
 }
@@ -179,7 +174,7 @@ body::before {
 .form-sub {
   font-family: var(--sans);
   font-size: 13px;
-  color: var(--slate);
+  color: var(--smoke);
   margin-bottom: 32px;
   line-height: 1.65;
 }
@@ -624,7 +619,7 @@ body::before {
 
 /* ABOUT */
 .section-about {
-  background: var(--midnight);
+  background: var(--midnight-deep);
   padding: 100px 80px;
 }
 
@@ -839,9 +834,8 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-copy { padding: 60px 28px 44px; }
-  .hero-form-panel { padding: 44px 28px 60px; }
+  .hero { padding: 60px 28px; }
+  .hero-form-panel { float: none; width: auto; margin: 0 0 32px 0; padding: 32px 24px; }
   .hero-form-panel::before { display: none; }
 
   .section-problem,
@@ -866,28 +860,14 @@ footer {
 <!-- HERO -->
 <section class="hero">
 
-  <div class="hero-copy">
-    <div class="eyebrow fade-up d1">Richard Cuevas &mdash; Free Essay</div>
+  <div class="eyebrow fade-up d1">Richard Cuevas &mdash; Free Essay</div>
 
-    <h1 class="hero-title fade-up d2">
-      Effective Everywhere.<br>
-      <em>Except&nbsp;at&nbsp;Home.</em>
-    </h1>
+  <h1 class="hero-title fade-up d2">
+    Effective Everywhere.<br>
+    <em>Except&nbsp;at&nbsp;Home.</em>
+  </h1>
 
-    <div class="gold-rule"></div>
-
-    <p class="hero-deck fade-up d3">
-      You are performing well by every available measure.<br><br>
-      You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance — between you and the people you built it for — that you haven't been able to close.<br><br>
-      <strong>Something is thinning beneath the surface.</strong> Your partner felt it first. Your children are adapting to it. You've noticed it in moments you don't talk about.<br><br>
-      This essay names it — precisely, without jargon, without telling you something is wrong with you.
-    </p>
-
-    <div class="hero-meta fade-up d4">
-      <div class="hero-meta-dot"></div>
-      27-page essay &nbsp;&middot;&nbsp; No cost &nbsp;&middot;&nbsp; Delivered immediately
-    </div>
-  </div>
+  <div class="gold-rule"></div>
 
   <div class="hero-form-panel fade-up d2">
     <div class="form-heading">Read the essay.<br>No obligation.</div>
@@ -915,6 +895,18 @@ footer {
 
     <p class="form-privacy">Your details stay private.</p>
 
+  </div>
+
+  <p class="hero-deck fade-up d3">
+    You are performing well by every available measure.<br><br>
+    You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance — between you and the people you built it for — that you haven't been able to close.<br><br>
+    <strong>Something is thinning beneath the surface.</strong> Your partner felt it first. Your children are adapting to it. You've noticed it in moments you don't talk about.<br><br>
+    This essay names it — precisely, without jargon, without telling you something is wrong with you.
+  </p>
+
+  <div class="hero-meta fade-up d4">
+    <div class="hero-meta-dot"></div>
+    27-page essay &nbsp;&middot;&nbsp; No cost &nbsp;&middot;&nbsp; Delivered immediately
   </div>
 
 </section>
