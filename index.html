@@ -80,7 +80,7 @@ body::before {
 .hero-portrait {
   background-image: url('assets/richard-cuevas-cutout.png');
   background-size: auto 70%;
-  background-position: center top;
+  background-position: center 25px;
   background-repeat: no-repeat;
   background-color: var(--parchment);
   position: relative;
@@ -133,7 +133,7 @@ body::before {
   font-size: 14px;
   line-height: 1.9;
   color: var(--charcoal);
-  max-width: 600px;
+  max-width: 420px;
   margin-bottom: 48px;
   opacity: 0.85;
 }
@@ -161,7 +161,7 @@ body::before {
 .hero-form-panel {
   position: absolute;
   bottom: 40px;
-  left: 50%;
+  left: 40%;
   transform: translateX(-50%);
   width: calc(100% - 80px);
   max-width: 320px;
@@ -642,23 +642,25 @@ body::before {
 }
 
 .about-inner {
-  max-width: 760px;
+  max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 540px 1fr;
   gap: 56px;
-  align-items: start;
+  align-items: center;
 }
 
 .portrait-box {
-  width: 110px;
-  height: 136px;
-  background: var(--charcoal);
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 2000 / 1414;
+  background-color: var(--charcoal);
+  background-image: url('assets/Richard Cuevas Trustpilot.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   box-shadow: 4px 4px 20px rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
@@ -867,8 +869,8 @@ footer {
 
   .signals-grid { grid-template-columns: 1fr; }
   .inside-grid { grid-template-columns: 1fr; gap: 44px; }
-  .about-inner { grid-template-columns: 1fr; }
-  .portrait-box { display: none; }
+  .about-inner { grid-template-columns: 1fr; gap: 32px; }
+  .portrait-box { max-width: 100%; }
   .bottom-grid { grid-template-columns: 1fr; gap: 44px; }
   footer { flex-direction: column; gap: 14px; text-align: center; padding: 36px 28px; }
 }
@@ -1077,9 +1079,7 @@ footer {
 <section class="section-about">
   <div class="about-inner">
 
-    <div class="portrait-box">
-      <div class="portrait-initials">RC</div>
-    </div>
+    <div class="portrait-box" role="img" aria-label="Richard Cuevas"></div>
 
     <div>
       <div class="about-name">Richard Cuevas</div>
