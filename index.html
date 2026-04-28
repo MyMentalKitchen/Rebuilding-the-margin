@@ -65,8 +65,24 @@ body::before {
 .hero {
   min-height: 100vh;
   background: var(--parchment);
-  padding: 80px;
-  display: flow-root;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  position: relative;
+}
+
+.hero-content {
+  padding: 80px 60px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-portrait {
+  background-image: url('assets/richard-cuevas-cutout.png');
+  background-size: auto 70%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: var(--parchment);
   position: relative;
 }
 
@@ -125,7 +141,6 @@ body::before {
 .hero-deck strong { color: var(--midnight); font-weight: 400; }
 
 .hero-meta {
-  clear: both;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -144,13 +159,16 @@ body::before {
 
 /* FORM PANEL */
 .hero-form-panel {
-  float: right;
-  width: 360px;
-  margin: 0 0 28px 48px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 80px);
+  max-width: 320px;
   background: var(--midnight);
-  padding: 36px 30px;
-  position: relative;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  padding: 20px 22px;
+  z-index: 2;
+  box-shadow: 0 12px 50px rgba(0,0,0,0.35);
 }
 
 .hero-form-panel::before {
@@ -834,8 +852,10 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .hero { padding: 60px 28px; }
-  .hero-form-panel { float: none; width: auto; margin: 0 0 32px 0; padding: 32px 24px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-content { padding: 60px 28px 40px; }
+  .hero-portrait { min-height: 50vh; background-position: center top; background-size: auto 90%; }
+  .hero-form-panel { position: static; transform: none; width: auto; max-width: none; padding: 32px 24px; margin: 0 28px 60px; }
   .hero-form-panel::before { display: none; }
 
   .section-problem,
@@ -860,14 +880,30 @@ footer {
 <!-- HERO -->
 <section class="hero">
 
-  <div class="eyebrow fade-up d1">Richard Cuevas &mdash; Free Essay</div>
+  <div class="hero-content">
+    <div class="eyebrow fade-up d1">Richard Cuevas &mdash; Free Essay</div>
 
-  <h1 class="hero-title fade-up d2">
-    Effective Everywhere.<br>
-    <em>Except&nbsp;at&nbsp;Home.</em>
-  </h1>
+    <h1 class="hero-title fade-up d2">
+      Effective Everywhere.<br>
+      <em>Except&nbsp;at&nbsp;Home.</em>
+    </h1>
 
-  <div class="gold-rule"></div>
+    <div class="gold-rule"></div>
+
+    <p class="hero-deck fade-up d3">
+      You are performing well by every available measure.<br><br>
+      You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance — between you and the people you built it for — that you haven't been able to close.<br><br>
+      <strong>Something is thinning beneath the surface.</strong> Your partner felt it first. Your children are adapting to it. You've noticed it in moments you don't talk about.<br><br>
+      This essay names it — precisely, without jargon, without telling you something is wrong with you.
+    </p>
+
+    <div class="hero-meta fade-up d4">
+      <div class="hero-meta-dot"></div>
+      27-page essay &nbsp;&middot;&nbsp; No cost &nbsp;&middot;&nbsp; Delivered immediately
+    </div>
+  </div>
+
+  <div class="hero-portrait"></div>
 
   <div class="hero-form-panel fade-up d2">
     <div class="form-heading">Read the essay.<br>No obligation.</div>
@@ -894,19 +930,6 @@ footer {
     </div>
 
     <p class="form-privacy">Your details stay private.</p>
-
-  </div>
-
-  <p class="hero-deck fade-up d3">
-    You are performing well by every available measure.<br><br>
-    You've built something real. The career. The reputation. The life you were told to build. And yet there's a distance — between you and the people you built it for — that you haven't been able to close.<br><br>
-    <strong>Something is thinning beneath the surface.</strong> Your partner felt it first. Your children are adapting to it. You've noticed it in moments you don't talk about.<br><br>
-    This essay names it — precisely, without jargon, without telling you something is wrong with you.
-  </p>
-
-  <div class="hero-meta fade-up d4">
-    <div class="hero-meta-dot"></div>
-    27-page essay &nbsp;&middot;&nbsp; No cost &nbsp;&middot;&nbsp; Delivered immediately
   </div>
 
 </section>
