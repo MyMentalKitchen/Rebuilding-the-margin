@@ -61,6 +61,23 @@ body::before {
 .d4 { animation-delay: 0.55s; }
 .d5 { animation-delay: 0.7s; }
 
+/* Full-bleed sections — break out of any constrained parent (e.g. GHL column max-width) */
+.hero,
+.section-problem,
+.section-signals,
+.section-inside,
+.section-reframe,
+.section-about,
+.section-bottom-cta,
+footer {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  max-width: 100vw;
+}
+
+html, body { overflow-x: hidden; }
+
 /* HERO */
 .hero {
   min-height: 100vh;
