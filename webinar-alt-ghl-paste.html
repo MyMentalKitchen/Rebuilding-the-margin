@@ -248,6 +248,11 @@ body::before {
 .btn-primary:hover { background: var(--charcoal); }
 .btn-primary:hover::after { transform: scaleX(1); }
 
+/* Gold variant — used on hero CTA */
+.btn-primary.is-gold { background: var(--gold); color: var(--midnight); }
+.btn-primary.is-gold:hover { background: var(--gold-hover); }
+.btn-primary.is-gold::after { display: none; }
+
 .btn-gold {
   display: inline-block;
   padding: 18px 42px;
@@ -1004,7 +1009,7 @@ body.modal-open {
     </div>
 
     <div class="fade-up d5" style="margin-top: 24px;">
-      <button type="button" class="btn-primary" data-open-modal="register-modal">Reserve My Seat</button>
+      <button type="button" class="btn-primary is-gold" data-open-modal="register-modal">Reserve My Seat</button>
     </div>
   </div>
 </section>
