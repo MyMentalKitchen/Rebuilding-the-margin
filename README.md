@@ -10,17 +10,24 @@ Static HTML landing pages for the Rebuilding the Margin webinar and programme. P
 | `webinar.html` | Original webinar registration page |
 | `webinar-alt.html` | **Canonical source** — current webinar registration page (long-form scroll variant) |
 | `webinar-alt-ghl-paste.html` | Derived from `webinar-alt.html` — paste-ready for the GHL Custom Code element |
-| `webinar-confirmation.html` | Post-registration thank-you page |
+| `webinar-confirmation.html` | **Canonical source** — post-registration thank-you page |
+| `webinar-confirmation-ghl-paste.html` | Derived from `webinar-confirmation.html` — paste-ready for GHL |
 | `programme.html` | Programme details page |
 
-## ⚠️ Keep these two in sync
+## ⚠️ Keep these pairs in sync
 
-**`webinar-alt.html`** and **`webinar-alt-ghl-paste.html`** must move together.
+Two pairs of files must move together:
 
-- `webinar-alt.html` is the standalone, browser-previewable version (full document with `<!DOCTYPE>`, `<head>`, etc.)
-- `webinar-alt-ghl-paste.html` is the same content stripped of document scaffolding (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`) and inline `<title>` / `<meta description>` — those are owned by GHL's SEO panel.
+- **`webinar-alt.html`** ↔ **`webinar-alt-ghl-paste.html`** (registration page)
+- **`webinar-confirmation.html`** ↔ **`webinar-confirmation-ghl-paste.html`** (thank-you page)
 
-When you edit content, layout, or styles, update **both files in the same commit**. If only the paste version changes (e.g. a GHL-specific tweak), note it explicitly in the commit message so the divergence is intentional and visible.
+In each pair:
+- The first file is the standalone, browser-previewable version (full document with `<!DOCTYPE>`, `<head>`, etc.)
+- The second is the same content stripped of document scaffolding (`<!DOCTYPE>`, `<html>`, `<head>`, `<body>`) and inline `<title>` / `<meta description>` — those are owned by GHL's SEO panel.
+
+When you edit content, layout, or styles, update **both files of the affected pair in the same commit**. If only the paste version changes (e.g. a GHL-specific tweak), note it explicitly in the commit message so the divergence is intentional and visible.
+
+The session date (`Wed, 14 May`) appears on both the registration page (hero block + reminder section) and the confirmation page (`<dl>`). When the date changes, search across all four files.
 
 ## Local preview
 
