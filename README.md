@@ -30,7 +30,12 @@ In each pair:
 
 When you edit content, layout, or styles, update **both files of the affected pair in the same commit**. If only the paste version changes (e.g. a GHL-specific tweak), note it explicitly in the commit message so the divergence is intentional and visible.
 
-The session date (`Wed, 14 May`) appears on both the registration page (hero block + reminder section) and the confirmation page (`<dl>`). When the date changes, search across all four files.
+The session date (`Wed, 14 May`) appears in three places:
+- Registration page (hero block + event-reminder section)
+- Webinar confirmation page (`<dl>` Time row)
+- Essay thank-you page (`.btn-cta-sub` underneath the Reserve My Seat button)
+
+When the date or time changes, search across all six files (each canonical + paste pair).
 
 ## Local preview
 
