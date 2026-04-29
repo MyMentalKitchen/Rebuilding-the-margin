@@ -12,14 +12,17 @@ Static HTML landing pages for the Rebuilding the Margin webinar and programme. P
 | `webinar-alt-ghl-paste.html` | Derived from `webinar-alt.html` — paste-ready for the GHL Custom Code element |
 | `webinar-confirmation.html` | **Canonical source** — post-registration thank-you page |
 | `webinar-confirmation-ghl-paste.html` | Derived from `webinar-confirmation.html` — paste-ready for GHL |
+| `thank-you.html` | **Canonical source** — essay-funnel thank-you page (after essay signup) |
+| `thank-you-ghl-paste.html` | Derived from `thank-you.html` — paste-ready for GHL |
 | `programme.html` | Programme details page |
 
 ## ⚠️ Keep these pairs in sync
 
-Two pairs of files must move together:
+Three pairs of files must move together:
 
-- **`webinar-alt.html`** ↔ **`webinar-alt-ghl-paste.html`** (registration page)
-- **`webinar-confirmation.html`** ↔ **`webinar-confirmation-ghl-paste.html`** (thank-you page)
+- **`webinar-alt.html`** ↔ **`webinar-alt-ghl-paste.html`** (webinar registration page)
+- **`webinar-confirmation.html`** ↔ **`webinar-confirmation-ghl-paste.html`** (webinar thank-you page)
+- **`thank-you.html`** ↔ **`thank-you-ghl-paste.html`** (essay thank-you page)
 
 In each pair:
 - The first file is the standalone, browser-previewable version (full document with `<!DOCTYPE>`, `<head>`, etc.)
