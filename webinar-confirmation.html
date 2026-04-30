@@ -160,71 +160,6 @@ body::before {
   line-height: 1.3;
 }
 
-/* VIDEO CONTAINER */
-.vsl-container {
-  width: 100%;
-  max-width: 720px;
-  margin-bottom: 48px;
-  position: relative;
-  background: var(--midnight);
-  border: 1px solid rgba(154, 122, 58, 0.2);
-  overflow: hidden;
-}
-
-.vsl-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-  overflow: hidden;
-}
-
-.vsl-wrapper iframe,
-.vsl-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Video placeholder — used until webinar-specific video is ready */
-.video-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 32px;
-  background: var(--midnight);
-}
-.video-placeholder-eyebrow {
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
-}
-.video-placeholder-rule {
-  width: 32px;
-  height: 1px;
-  background: var(--gold);
-  margin-bottom: 22px;
-  opacity: 0.6;
-}
-.video-placeholder-text {
-  font-family: var(--serif);
-  font-size: clamp(22px, 3vw, 30px);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--parchment);
-  line-height: 1.3;
-  max-width: 420px;
-}
-
 /* TRANSITION TEXT */
 .transition-text {
   font-family: var(--sans);
@@ -332,25 +267,6 @@ html, body { overflow-x: hidden; }
     <dt>Where</dt>
     <dd>Live on Zoom &mdash; link in your inbox</dd>
   </dl>
-
-  <!-- VIDEO SECTION -->
-  <!--
-    PLACEHOLDER: webinar-specific video not yet ready.
-    When the real video URL is supplied, replace the .video-placeholder
-    block below with:
-      <video controls playsinline preload="metadata" width="100%">
-        <source src="<NEW_VIDEO_URL>" type="video/mp4">
-      </video>
-  -->
-  <div class="vsl-container fade-up d3">
-    <div class="vsl-wrapper">
-      <div class="video-placeholder">
-        <div class="video-placeholder-eyebrow">Coming Soon</div>
-        <div class="video-placeholder-rule"></div>
-        <div class="video-placeholder-text">A short message from Richard</div>
-      </div>
-    </div>
-  </div>
 
   <p class="transition-text fade-up d4">
     <strong>The session is live and small.</strong> There won't be a recording, and that's deliberate. The man who walks back to his own front door after this evening will know something about himself he didn't know when he logged on. Treat the date the way you'd treat any other commitment that matters: write it down, hold the room, show up.
